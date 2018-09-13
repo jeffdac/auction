@@ -82,7 +82,7 @@
       "check-else",
       "check-whitespace"
     ],
-    "prefer-const": true,
+    "prefer-const": false,
     "quotemark": [
       "avoid-escape"
     ],
@@ -91,10 +91,7 @@
       true,
       "always"
     ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "triple-equals": false,
     "typedef-whitespace": [
       true,
       {

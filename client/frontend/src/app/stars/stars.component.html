@@ -1,3 +1,4 @@
 <p>
-  stars works!
+  <span *ngFor="let start of starts" [class.glyphicon-star-empty]="start" class="glyphicon glyphicon-star"></span>
+  <span>{{rating}}星</span>
 </p>

@@ -4,11 +4,11 @@
       <img src="http://temp.im/320x150" alt="">
       <div class="caption">
         <h4 class="pull-right">{{product.price}}</h4>
-        <h4><a>{{product.title}}</a></h4>
+        <h4><a [routerLink]="['/product',product.id]">{{product.title}}</a></h4>
         <p>{{product.desc}}</p>
       </div>
       <div>
-        <app-stars></app-stars>
+        <app-stars [rating]="product.rating"></app-stars>
       </div>
     </div>
   </div>

@@ -24,6 +24,13 @@ export class ProductService {
   constructor() {
   }
 
+  getAllCategories() {
+    return [{id: 1, name: '电子产品'}, {id: 2, name: '硬件设备'}, {id: 3, name: '服装'}, {id: 4, name: '生活用品'}, {
+      id: 5,
+      name: '健身器材'
+    }, {id: 6, name: '家电产品'}, {id: 7, name: '盆栽'}];
+  }
+
   getProducts() {
     return this.products;
   }

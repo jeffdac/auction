@@ -12,6 +12,7 @@ import {StarsComponent} from './stars/stars.component';
 import {HomeComponent} from "./home/home.component";
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
 import {ProductService} from "./share/product.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import {ProductService} from "./share/product.service";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductService

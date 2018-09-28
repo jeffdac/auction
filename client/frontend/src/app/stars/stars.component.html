@@ -1,4 +1,5 @@
 <p>
-  <span *ngFor="let start of starts" [class.glyphicon-star-empty]="start" class="glyphicon glyphicon-star"></span>
-  <span>{{rating}}星</span>
+  <span *ngFor="let start of starts;let i = index" [class.glyphicon-star-empty]="start" (click)="clickStar(i)"
+        class="glyphicon glyphicon-star"></span>
+  <span>{{rating | number:'1.0-2'}}星</span>
 </p>

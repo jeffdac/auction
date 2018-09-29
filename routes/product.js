@@ -57,6 +57,14 @@ let products = [
     }
 ];
 
+let comments = [
+    {id: 1, productId: 1, timestamp: '2018-08-25 10:18:56', user: '陌上离歌', rating: 3, content: '物流给力，东西便宜实惠'},
+    {id: 2, productId: 1, timestamp: '2018-08-12 14:18:32', user: '醉红颜', rating: 4, content: '值得购买'},
+    {id: 3, productId: 1, timestamp: '2018-08-01 10:45:10', user: '张大强', rating: 2, content: '没用就坏了，不建议购买'},
+    {id: 4, productId: 2, timestamp: '2018-07-19 17:10:09', user: '马玉华', rating: 5, content: '值得信赖的店家'},
+];
+
+
 function show(req, res, next) {
     const categoryId = req.query.categoryId;
     if (notFound(categoryId, res)) return;
@@ -71,8 +79,9 @@ function index(req, res, next) {
     const productId = req.param('productId');
     if (notFound(productId, res)) return;
     const _product = products.find(item => +productId === item.id);
+    const _comment = comments.filter(item => +productId === item.productId);
     if (_product) {
-        res.send({status: true, result: _product})
+        res.send({status: true, result: Object.assign(_product, {comments: _comment})});
     } else {
         res.send({status: false, message: 'not found'})
     }

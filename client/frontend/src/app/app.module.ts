@@ -11,8 +11,10 @@ import {ProductComponent} from './product/product.component';
 import {StarsComponent} from './stars/stars.component';
 import {HomeComponent} from "./home/home.component";
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
-import {ProductService} from "./share/product.service";
+import {ProductService} from "./services/product.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {BaseInterceptorService} from "../common/http-interceptor/base-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -30,9 +32,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: BaseInterceptorService, multi: true},
     ProductService
   ],
   bootstrap: [AppComponent]

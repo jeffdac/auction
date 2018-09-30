@@ -70,7 +70,7 @@ function show(req, res, next) {
     if (notFound(categoryId, res)) return;
     if (!categoryId) return res.send({status: true, result: products});
     const filterProducts = products.filter(item => {
-        return item.categories.find(category => +categoryId === category.id) !== -1;
+        return !!item.categories.find(category => +categoryId === category.id);
     });
     res.send({status: true, result: filterProducts})
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ProductService} from "../share/product.service";
+import {ProductService} from "../services/product.service";
 
 @Component({
   selector: 'app-search',

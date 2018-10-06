@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Product, Comment, ProductService} from "../share/product.service";
+import {Product, Comment, ProductService} from "../services/product.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -11,6 +11,10 @@ export class ProductDetailComponent implements OnInit {
 
   product: Product;
   comments: Comment[] = [];
+
+  newRating = 5;
+  newComment = '';
+  isCommentHidden = true;
 
   constructor(private routeInfo: ActivatedRoute,
               private productService: ProductService) {
@@ -37,6 +41,18 @@ export class ProductDetailComponent implements OnInit {
     } catch (err) {
 
     }
+  }
+
+  addComment() {
+    let comment = new Comment(0, this.product.id, new Date().toISOString(), '吴磊', this.newRating, this.newComment);
+    this.comments.unshift(comment);
+
+    let total = this.comments.reduce((sum, c) => sum + c.rating, 0);
+    this.product.rating = total / this.comments.length;
+
+    this.newComment = '';
+    this.newRating = 5;
+    this.isCommentHidden = true;
   }
 
 }

@@ -9,7 +9,4 @@ declare const $: any;
 })
 export class AppComponent {
 
-  test() {
-    $("span").addClass('abc');
-  }
 }

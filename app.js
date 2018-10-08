@@ -18,6 +18,8 @@ app.all('*', function (req, res, next) {
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
+let cors = require('cors');
+app.use(cors());
 
 
 // view engine setup
@@ -34,6 +36,15 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 require('./route')(app);
 
+
+global.MainError = function (fileName, value) {
+    this.fileName = this.name = fileName;
+    this.fileNameKey = value || '';
+    return this;
+};
+global.MainError.prototype = new Error();
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -47,7 +58,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.send({status: false, message: 'not found'});
 });
 
 module.exports = app;

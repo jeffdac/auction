@@ -1,9 +1,7 @@
 function notFound(val, res) {
     if (val === 'undefined' || val === 'null') {
-        res.send({status: false, message: 'not found'});
-        return true;
+        throw new Error({status: false, message: 'not found'});
     }
-    return false;
 }
 
 module.exports = notFound;

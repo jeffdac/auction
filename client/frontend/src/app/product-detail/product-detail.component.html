@@ -1,13 +1,13 @@
 <div class="thumbnail clearfix">
-  <img src="http://temp.im/820x260" alt="">
+  <img src="http://placehold.it/820x260" alt="">
   <div class="col-md-12">
     <div>
-      <h4 class="pull-right">{{product?.price}}</h4>
+      <h4 class="pull-right">{{product?.price}}元</h4>
       <h4>{{product?.title}}</h4>
       <p>{{product?.desc}}</p>
     </div>
     <div>
-      <p *ngIf="comments.length" class="pull-right">{{comments.length}}</p>
+      <p *ngIf="product?.comments.length" class="pull-right">{{product?.comments.length}}条评论</p>
       <p>
         <app-stars [rating]="product?.rating"></app-stars>
       </p>
@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<div *ngIf="comments.length" class="well">
+<div *ngIf="product?.comments.length" class="well">
   <div>
     <button class="btn btn-success" (click)="isCommentHidden = !isCommentHidden">发表评论</button>
   </div>
@@ -31,12 +31,12 @@
       <button class="btn btn-primary" (click)="addComment()">提交</button>
     </div>
   </div>
-  <div class="row" *ngFor="let comment of comments">
+  <div class="row" *ngFor="let comment of product?.comments">
     <hr>
     <div class="col-md-12">
       <app-stars [rating]="comment.rating"></app-stars>
       <span>{{comment.user}}</span>
-      <span class="pull-right">{{comment.timestamp}}</span>
+      <span class="pull-right">{{comment.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</span>
       <p></p>
       <p>{{comment.content}}</p>
     </div>

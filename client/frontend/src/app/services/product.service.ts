@@ -9,16 +9,20 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getCategories() {
-    return this.http.get('productCategories');
+  getCategories(): Promise<any> {
+    return this.http.get('productCategories').toPromise();
   }
 
   getProducts(query?: any): Promise<any> {
-    return this.http.get('product', {params: query}).toPromise();
+    return this.http.get('products', {params: query}).toPromise();
   }
 
   getProduct(id: number): Promise<any> {
     return this.http.get(`product/${id}`).toPromise();
+  }
+
+  addComment(id: number, body: any): Promise<any> {
+    return this.http.post(`product/${id}/addComment`, body).toPromise();
   }
 
 

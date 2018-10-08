@@ -25,8 +25,8 @@ export class SearchComponent implements OnInit {
     this.getAllCategories();
   }
 
-  getAllCategories() {
-    this.categories = this.productService.getAllCategories();
+  async getAllCategories() {
+    this.categories = (await this.productService.getCategories()).result;
   }
 
   positiveNumberValidator(control: FormControl) {

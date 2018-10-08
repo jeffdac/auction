@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
 
   async getProducts() {
     try {
-      this.products = await this.productService.getProducts();
+      this.products = (await this.productService.getProducts()).result;
     } catch (err) {
 
     }

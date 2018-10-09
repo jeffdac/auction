@@ -10,14 +10,14 @@ let usersRouter = require('./routes/users');
 let app = express();
 
 //设置跨域请求头
-app.all('*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By", ' 3.2.1');
-    res.header("Content-Type", "application/json;charset=utf-8");
-    next();
-});
+// app.all('*', function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+//     res.header("X-Powered-By", ' 3.2.1');
+//     res.header("Content-Type", "application/json;charset=utf-8");
+//     next();
+// });
 let cors = require('cors');
 app.use(cors());
 
@@ -35,6 +35,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 require('./route')(app);
+
+// 访问静态资源（如：html）路由
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/test.html'))
+});
 
 
 global.MainError = function (fileName, value) {

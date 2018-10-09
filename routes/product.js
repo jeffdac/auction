@@ -68,6 +68,7 @@ let products = [
 
 function show(req, res, next) {
     const categoryId = req.query.categoryId;
+    console.log(typeof categoryId, '------');
     if (notFound(categoryId, res)) return;
     if (!categoryId) return res.send({status: true, result: products});
     const filterProducts = products.filter(item => {
